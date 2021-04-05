@@ -24,3 +24,6 @@ spring:
   thymeleaf:
     prefix: classpath:/templates/
 
+logging:
+  level:
+    com.wxm.springcloud.*: debug #打印sql

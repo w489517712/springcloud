@@ -1,6 +1,9 @@
 package com.wxm.springcloud.tour.controller;
 
+import com.wxm.springcloud.sys.controller.SysController;
 import com.wxm.springcloud.sys.po.Result;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -11,7 +14,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/tour")
-public class TourController {
+public class TourController extends SysController{
 
     @PostMapping("/queryTourList")
     @ResponseBody
@@ -19,8 +22,9 @@ public class TourController {
         if(map  == null){
             map = new HashMap();
         }
+        return doPost(apiUrl+"/tour/queryList", map);
 
-        //List<Test> tests = testService.queryList(map);
-        return Result.ok("操作成功").put("testList","");
     }
+
+
 }

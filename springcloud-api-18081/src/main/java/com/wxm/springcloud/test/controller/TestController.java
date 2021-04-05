@@ -23,7 +23,7 @@ public class TestController {
 
     @PostMapping("/save")
     @ResponseBody
-    public Result save(@RequestBody Test test){
+    public Result save(@RequestParam Test test){
         try {
             testService.save(test);
         }catch (Exception e){
