@@ -26,4 +26,4 @@ spring:
 
 logging:
   level:
-    com.wxm.springcloud.*: debug #打印sql
+    com.wxm.springcloud.*: debug #打印sql111
