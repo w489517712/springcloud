@@ -28,7 +28,7 @@ public class TestController {
             testService.save(test);
         }catch (Exception e){
             e.printStackTrace();
-            return Result.error("操作失败");
+            return Result.error("操作失败  ");
         }
         return Result.ok("操作成功");
     }
