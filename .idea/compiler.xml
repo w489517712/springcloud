@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springcloud-api-18081" />
+        <module name="springcloud-consumner-18082" />
+        <module name="springcloud-eureka-8761" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springcloud" target="1.5" />
+      <module name="springcloud-api-18081" target="1.5" />
+      <module name="springcloud-consumer-18082" target="1.5" />
+      <module name="springcloud-consumner-18082" target="1.5" />
+      <module name="springcloud-eureka-8761" target="1.5" />
+      <module name="springcloudconsumer18082" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
