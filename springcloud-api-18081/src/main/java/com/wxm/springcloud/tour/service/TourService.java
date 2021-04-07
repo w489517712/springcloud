@@ -13,4 +13,5 @@ public interface TourService {
 
     public List<Tour> queryList(Map maps);
 
+    int queryListTotal(Map map);
 }

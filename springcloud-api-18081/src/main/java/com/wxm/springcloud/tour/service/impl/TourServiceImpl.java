@@ -21,4 +21,8 @@ public class TourServiceImpl implements TourService{
     public List<Tour> queryList(Map maps) {
         return tourDao.queryList(maps);
     }
+
+    public int queryListTotal(Map map) {
+        return tourDao.queryListTotal(map);
+    }
 }

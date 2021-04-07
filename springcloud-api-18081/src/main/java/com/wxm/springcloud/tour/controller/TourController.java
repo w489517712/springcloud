@@ -4,6 +4,7 @@ import com.wxm.springcloud.sys.po.Result;
 import com.wxm.springcloud.test.po.Test;
 import com.wxm.springcloud.tour.po.Tour;
 import com.wxm.springcloud.tour.service.TourService;
+import com.wxm.springcloud.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,14 @@ public class TourController {
             map = new HashMap();
         }
 
+
+        PageUtil.getQuery(map);
+
+        //需要返回总条数和查询的数据数
         List<Tour> list = tourService.queryList(map);
-        return Result.ok("操作成功").put("list",list);
+        int total = tourService.queryListTotal(map);
+
+
+        return Result.ok("操作成功").put("list",list).put("total",total);
     }
 }

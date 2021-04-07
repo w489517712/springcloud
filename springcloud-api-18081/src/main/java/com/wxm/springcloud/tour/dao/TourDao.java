@@ -13,4 +13,5 @@ import java.util.Map;
 public interface TourDao {
     public List<Tour> queryList(Map maps) ;
 
+    int queryListTotal(Map map);
 }
