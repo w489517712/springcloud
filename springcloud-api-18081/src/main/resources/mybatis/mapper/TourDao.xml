@@ -21,9 +21,13 @@
     <select  id="queryList" resultType="com.wxm.springcloud.tour.po.Tour" >
           select *  from  v_tour_info t
           where 1=1
-          <if test="id != null and id !=''">
-              and  t.id = #{id}
+          <if test="city != null and city !=''">
+              and  t.name = #{city}
           </if>
+
+        <if test="id != null and id !=''">
+            and  t.id = #{id}
+        </if>
 
           <if test="tn != null and tn !=''">
               limit #{rn} , #{tn}
@@ -33,6 +37,9 @@
     <select  id="queryListTotal" resultType="int" >
         select count(*) from  v_tour_info t
         where 1=1
+        <if test="city != null and city !=''">
+            and  t.name = #{city}
+        </if>
         <if test="id != null and id !=''">
             and  t.id = #{id}
         </if>

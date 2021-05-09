@@ -12,9 +12,10 @@ var vm= new Vue({
     el: '#app',
     data: {
         q:{
-           s1:'',  //国家
-           s2:'',   //酒店
-           page:'1'
+            s1:'',
+            s2:'',
+            city:'',
+            page:'1'
         },
         allPageNum :0,
         message: 'Hello Vue!',
