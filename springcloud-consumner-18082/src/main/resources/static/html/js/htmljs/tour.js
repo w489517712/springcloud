@@ -1,5 +1,8 @@
 $(function(){
 
+    if(document.cookie==""){
+        window.location.href = '/html/contact.html';  //跳转到首页
+    }
     vm.q.s1 = getQueryVariable('s1')
     vm.q.s2 = getQueryVariable('s2')
     vm.getInfo();

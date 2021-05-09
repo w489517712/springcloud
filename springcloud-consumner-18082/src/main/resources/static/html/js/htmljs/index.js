@@ -1,5 +1,8 @@
 $(function(){
 
+    if(document.cookie==""){
+        window.location.href = '/html/contact.html';  //跳转到首页
+    }
 
 
 });
