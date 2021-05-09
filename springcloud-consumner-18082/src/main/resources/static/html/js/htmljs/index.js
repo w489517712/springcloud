@@ -34,7 +34,7 @@ var vm= new Vue({
 
             }else if (isBlank(vm.q.s1) && isBlank(vm.q.s2)){
                 //2个都选了的情况
-                window.location.href = '/html/hotel.html?s1='+vm.q.s1+"&s2="+vm.q.s2;  //跳转到旅游页面
+                window.location.href = '/html/hotel.html?s1='+vm.q.s1+"&s2="+vm.q.s2;  //跳转到酒店页面
             }else{
                 //2个条件都为空的话  不需要调用后台 直接跳转页面就可以了
                 window.location.href = '/html/tour.html?s1='+vm.q.s1+"&s2="+vm.q.s2;  //跳转到旅游页面

@@ -2,6 +2,7 @@ package com.wxm.springcloud.tour.service.impl;
 
 import com.wxm.springcloud.tour.dao.TourDao;
 import com.wxm.springcloud.tour.po.Tour;
+import com.wxm.springcloud.tour.po.User;
 import com.wxm.springcloud.tour.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,14 @@ public class TourServiceImpl implements TourService{
 
     public int queryListTotal(Map map) {
         return tourDao.queryListTotal(map);
+    }
+
+    public User checkLoginInfo(Map map) {
+        return tourDao.checkLoginInfo(map);
+
+    }
+
+    public void updateUserToken(String replace) {
+        tourDao.updateUserToken(replace);
     }
 }

@@ -1,3 +1,17 @@
+
+
+//ajax 全局设置
+$.ajaxSetup({
+    beforeSend: function(xhr) {
+        xhr.setRequestHeader("token",getToken());
+    },
+})
+
+
+
+
+
+
 // 空或者null返回false
 function isBlank(str){
     if(null == str){
@@ -94,4 +108,26 @@ function toPage(){
     //alert($(this).attr("id"))
     vm.q.page = $(this).attr("id").split("l")[1];
     vm.queryList();
+}
+
+function getToken(){
+    var strcookie = document.cookie;//获取cookie字符串
+    var arrcookie = strcookie.split("; ");//分割
+    //遍历匹配
+    var token = "";
+    for ( var i = 0; i < arrcookie.length; i++) {
+        var arr = arrcookie[i].split("=");
+        if (arr[0] == "token"){
+            token = arr[1];
+            return arr[1];
+        }
+    }
+    if(window.location.href.indexOf('contact') == -1){
+        if(token == ""){
+            window.location.href = '/html/contact.html';  //跳转到首页
+        }
+    }
+
+
+    return "";
 }

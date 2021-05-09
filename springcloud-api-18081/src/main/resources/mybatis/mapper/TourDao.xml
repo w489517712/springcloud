@@ -37,6 +37,21 @@
             and  t.id = #{id}
         </if>
     </select>
+    <select  id="checkLoginInfo" resultType="com.wxm.springcloud.tour.po.User" >
+          select
+            id,
+            name,
+            password passWord,
+            token
+
+            from v_user  where name = #{name} and password = #{password}
+    </select>
+
+    <update id="updateUserToken">
+
+        update v_user set token = #{value}
+
+    </update>
 
 
 </mapper>

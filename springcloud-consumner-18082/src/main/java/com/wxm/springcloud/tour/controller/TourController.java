@@ -6,6 +6,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,5 +29,24 @@ public class TourController extends SysController{
 
     }
 
+    @PostMapping("/login")
+    @ResponseBody
+    public Result login(@RequestBody Map map,HttpServletRequest request,HttpServletResponse response){
+        if(map  == null){
+            map = new HashMap();
+        }
+
+        Result result = doPost(apiUrl + "/tour/login", map);
+//        String code = result.get("code").toString();
+//        if(code.equals("1")){
+//            String token = result.get("token").toString();
+//            Cookie cookie = new Cookie("token",token);
+//            cookie.setMaxAge(1800);
+//            response.addCookie(cookie);
+//
+//        }
+        return result;
+
+    }
 
 }
