@@ -19,6 +19,17 @@ import java.util.Map;
 @RequestMapping("/tour")
 public class TourController extends SysController{
 
+    @PostMapping("/register")
+    @ResponseBody
+    public Result register(@RequestBody Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+        return doPost(apiUrl+"/tour/register", map);
+
+    }
+
+
     @PostMapping("/queryTourList")
     @ResponseBody
     public Result queryList(@RequestBody Map map){
