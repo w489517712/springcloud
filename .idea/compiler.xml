@@ -13,7 +13,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="springcloud" target="1.5" />
-      <module name="springcloud-api-18081" target="1.5" />
+      <module name="springcloud-api-18081" target="6" />
       <module name="springcloud-consumer-18082" target="1.5" />
       <module name="springcloud-consumner-18082" target="1.5" />
       <module name="springcloud-eureka-8761" target="1.5" />
