@@ -1,7 +1,9 @@
 package com.wxm.springcloud.tour.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.wxm.springcloud.sys.controller.SysController;
 import com.wxm.springcloud.sys.po.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -19,18 +21,20 @@ import java.util.Map;
 @RequestMapping("/tour")
 public class TourController extends SysController{
 
+
     @PostMapping("/register")
     @ResponseBody
-    public Result register(@RequestBody Map map){
-        if(map  == null){
+    public Result register(@RequestBody Map map) {
+        if (map == null) {
             map = new HashMap();
         }
+        System.out.println(JSON.toJSONString(map));
         return doPost(apiUrl+"/tour/register", map);
-
     }
 
 
-    @PostMapping("/queryTourList")
+
+    @PostMapping("/queryTourList")//酒店查询
     @ResponseBody
     public Result queryList(@RequestBody Map map){
         if(map  == null){
@@ -39,6 +43,17 @@ public class TourController extends SysController{
         return doPost(apiUrl+"/tour/queryList", map);
 
     }
+
+    @PostMapping("/queryTicketList")//机票查询
+    @ResponseBody
+    public Result queryList1(@RequestBody Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+        return doPost(apiUrl+"/tour/queryList1", map);
+
+    }
+
 
     @PostMapping("/login")
     @ResponseBody

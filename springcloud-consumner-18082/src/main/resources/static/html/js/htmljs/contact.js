@@ -18,10 +18,10 @@ var vm= new Vue({
 
             if(!isBlank(vm.user.name)){
 
-                return alert("请输入用户名！")
+                return alert("Please enter user name！")
             }else if(!isBlank(vm.user.password)){
 
-                return  alert("请输入密码！")
+                return  alert("Please enter password！")
             }
 
 

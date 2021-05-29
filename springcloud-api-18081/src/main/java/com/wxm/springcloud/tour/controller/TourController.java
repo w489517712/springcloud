@@ -25,7 +25,14 @@ public class TourController {
     @Autowired
     private TourService tourService;
 
-    @PostMapping("/queryList")
+    @RequestMapping("/register")
+    @ResponseBody
+    public Result register(@RequestParam Map map){
+        tourService.insert(JSON.parseObject(JSON.toJSONString(map),User.class));
+        return Result.ok("操作成功");
+    }
+
+    @PostMapping("/queryList")//酒店查询
     @ResponseBody
     public Result queryList(@RequestParam Map map){
         if(map  == null){
@@ -40,6 +47,22 @@ public class TourController {
         int total = tourService.queryListTotal(map);
 
 
+        return Result.ok("操作成功").put("list",list).put("total",total);
+    }
+
+    @PostMapping("/queryList1")//机票查询
+    @ResponseBody
+    public Result queryList1(@RequestParam Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+
+
+        PageUtil.getQuery(map);
+
+        //需要返回总条数和查询的数据数
+        List<Tour> list = tourService.queryList(map);
+        int total = tourService.queryListTotal(map);
         return Result.ok("操作成功").put("list",list).put("total",total);
     }
 
@@ -64,8 +87,9 @@ public class TourController {
 
         }else{
 
-            return Result.error("登录失败！用户名或密码错误！");
+            return Result.error("Login failed！Wrong username or password！");
         }
+
 
 
     }
@@ -96,6 +120,8 @@ public class TourController {
 
 
     }
+
+
 
 
 

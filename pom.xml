@@ -11,6 +11,7 @@
         <module>springcloud-api-18081</module>
         <module>springcloud-consumner-18082</module>
         <module>springcloud-eureka-8761</module>
+
     </modules>
 
     <!-- 打包方式 -->

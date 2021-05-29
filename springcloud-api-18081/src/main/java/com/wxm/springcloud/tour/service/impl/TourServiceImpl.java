@@ -1,5 +1,6 @@
 package com.wxm.springcloud.tour.service.impl;
 
+import com.wxm.springcloud.tour.dao.TicketDao;
 import com.wxm.springcloud.tour.dao.TourDao;
 import com.wxm.springcloud.tour.po.Tour;
 import com.wxm.springcloud.tour.po.User;
@@ -19,6 +20,9 @@ public class TourServiceImpl implements TourService{
     @Autowired
     private TourDao tourDao;
 
+    @Autowired
+    private TicketDao ticektDao;
+
     public List<Tour> queryList(Map maps) {
         return tourDao.queryList(maps);
     }
@@ -34,5 +38,10 @@ public class TourServiceImpl implements TourService{
 
     public void updateUserToken(String replace) {
         tourDao.updateUserToken(replace);
+    }
+
+    @Override
+    public void insert(User user){
+        Integer rows = tourDao.register(user);
     }
 }

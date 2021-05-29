@@ -19,4 +19,7 @@ public interface TourService {
     User checkLoginInfo(Map map);
 
     void updateUserToken(String replace);
+
+    void insert(User user);
+
 }
