@@ -66,5 +66,31 @@ public class TourServiceImpl implements TourService{
         return tourDao.queryOrderListTotal(map);
     }
 
+    @Override
+    public void saveOrder(Order order) {
+        tourDao.saveOrder(order);
+
+    }
+
+    @Override
+    public void updateOrder(Order order) {
+        tourDao.updateOrder(order);
+    }
+
+    @Override
+    public Tour queryTourObject(Map map) {
+        return tourDao.queryTourObject(map);
+    }
+
+    @Override
+    public Ticket queryTicketObject(Map map) {
+        return tourDao.queryTicketObject(map);
+    }
+
+    @Override
+    public Order queryOrderObject(Map map) {
+        return tourDao.queryOrderObject(map);
+    }
+
 
 }

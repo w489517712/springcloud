@@ -3,12 +3,15 @@ $(function(){
     if(document.cookie==""){
         window.location.href = '/html/contact.html';  //跳转到首页
     }
+    vm.q.s1 = getQueryVariable('s1')
+    vm.q.s2 = getQueryVariable('s2')
     vm.getInfo();
 
 });
 
-function selected(id) {
-    window.location.href = '/html/order-info.html?id='+id;
+function selected(id){
+    window.opener.vm.selectedTour(id);
+    window.close()
 }
 
 
@@ -16,31 +19,28 @@ var vm= new Vue({
     el: '#app',
     data: {
         q:{
-            addrA:'',
-            addrB:'',
+            s1:'',
+            s2:'',
+            city:'',
             page:'1'
         },
         allPageNum :0,
         message: 'Hello Vue!',
     },
     methods:{
+
+
+
+
         getInfo:function(){
 
-            vm.queryList();
+                vm.queryList();
 
         },
-
-
-        createOrder:function(){
-
-            window.location.href = '/html/order-info.html';  //跳转到首页
-        },
-
-
 
         queryList:function(){
             $.ajax({
-                url:'/tour/queryOrderList',
+                url:'/tour/queryTourList',
                 type:'post',
                 //async
                 data:JSON.stringify(vm.q),
@@ -57,7 +57,7 @@ var vm= new Vue({
                         divInfo =
                             '<div class="col-md-4 ftco-animate fadeInUp ftco-animated">'+
                             '<div class="destination">'+
-                            '<a href="javascript:void(0);" onclick="selected('+info.id+')" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('+info.pngurl+');">'+
+                            '<a href="javascript:void(0);"  onclick="selected('+info.id+')"  class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('+info.pngurl+');">'+
                             '<div class="icon d-flex justify-content-center align-items-center">'+
                             '<span class="icon-search2"></span>'+
                             '</div>'+
@@ -65,18 +65,31 @@ var vm= new Vue({
                             '<div class="text p-3">'+
                             '<div class="d-flex">'+
                             '<div class="one">'+
-                            '<h3><a href="#">'+info.setmeal+'/'+info.ticketRemark+'</a></h3>';
+                            '<h3><a href="#">'+info.country+'</a></h3>';
+                        divInfo+=
+                            '<p class="rate">';
+                            for(var j = 0;j<5;j++){
+                                if(j<info.lev){
+                                    divInfo+= '<i class="icon-star"></i>';
+                                }else{
+                                    divInfo+= '<i class="icon-star-o"></i>';
+                                }
+                            }
+                        divInfo+=
+                            '<span>'+info.lev+' Rating</span>'+
+                            '</p>';
                         divInfo+=
                             '</div>'+
                             '<div class="two">'+
                             '<span class="price">$'+info.money+'</span>'+
                             '</div>'+
                             '</div>'+
-                            ' <p>'+info.addrA+'</p>'+
-                            ' <p>'+info.addrB+'</p>'+
+                            ' <p>'+info.remark+'</p>'+
+                            ' <p class="days"><span>'+info.setmeal+'</span></p>'+
                             '<hr>'+
                             '<p class="bottom-area d-flex">'+
-                            '<span>'+info.createTimeStr+'</span>'+
+                            '<span><i class="icon-map-o"></i> San Franciso, CA</span>'+
+                            '<span class="ml-auto"><a href="#">Discover</a></span>'+
                             '</p>'+
                             '</div>'+
                             '</div>'+

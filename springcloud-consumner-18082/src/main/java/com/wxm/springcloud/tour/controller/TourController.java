@@ -66,7 +66,54 @@ public class TourController extends SysController{
 
     }
 
+    @PostMapping("/saveOrder")//订单新增
+    @ResponseBody
+    public Result saveOrder(@RequestBody Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+        return doPost(apiUrl+"/tour/saveOrder", map);
 
+    }
+
+    @PostMapping("/updateOrder")//订单新增
+    @ResponseBody
+    public Result updateOrder(@RequestBody Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+        return doPost(apiUrl+"/tour/updateOrder", map);
+
+    }
+
+
+    @PostMapping("/queryTicketObject")
+    @ResponseBody
+    public Result queryTicketObject(@RequestBody Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+        return doPost(apiUrl+"/tour/queryTicketObject", map);
+
+    }
+    @PostMapping("/queryTourObject")
+    @ResponseBody
+    public Result queryTourObject(@RequestBody Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+        return doPost(apiUrl+"/tour/queryTourObject", map);
+
+    }
+    @PostMapping("/queryOrderObject")
+    @ResponseBody
+    public Result queryOrderObject(@RequestBody Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+        return doPost(apiUrl+"/tour/queryOrderObject", map);
+
+    }
 
 
 

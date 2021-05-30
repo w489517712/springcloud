@@ -12,8 +12,8 @@ import java.util.Date;
 public class Order {
 
     private int id;
-    private int tourid;
-    private int ticketid;
+    private Integer tourid;
+    private Integer ticketid;
     private String username;
     private String phone;
     private BigDecimal money;
@@ -31,6 +31,10 @@ public class Order {
     private String setmeal;
 
     private String createTimeStr;
+
+    private BigDecimal ticketMoney;
+
+    private BigDecimal tourMoney;
 
 
 }

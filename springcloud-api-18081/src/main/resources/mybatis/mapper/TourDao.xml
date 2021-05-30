@@ -174,5 +174,52 @@
     </update>
 
 
+    <insert id="saveOrder" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+          insert into v_order_info
+          (tourid,ticketid,username,phone,money,createtime,updatetime,remark) VALUES
+          (
+              #{tourid},
+              #{ticketid},
+              #{username},
+              #{phone},
+              #{money},
+              now(),
+              now(),
+              #{remark}
+          )
+
+    </insert>
+
+    <insert id="updateOrder">
+        update v_order_info SET
+           <if test="tourid != null and tourid !=''">tourid =#{tourid}, </if>
+           <if test="ticketid != null and ticketid !=''">ticketid =#{ticketid}, </if>
+           <if test="username != null and username !=''">username =#{username}, </if>
+        <if test="phone != null and phone !=''">phone =#{phone}, </if>
+        <if test="money != null and money !=''">money =#{money}, </if>
+        <if test="remark != null and remark !=''">remark =#{remark}, </if>
+        updatetime = now() where id = #{id}
+    </insert>
+
+    <select id="queryTourObject" resultType="com.wxm.springcloud.tour.po.Tour">
+          select * from v_tour_info where id = #{id}
+
+    </select>
+
+    <select id="queryTicketObject" resultType="com.wxm.springcloud.tour.po.Ticket">
+        select * from v_ticket_info where id = #{id}
+
+    </select>
+    <select id="queryOrderObject" resultType="com.wxm.springcloud.tour.po.Order">
+        select
+        o.*,t.addrA,t.addrB,t.pngurl,t.remark ticketRemark,u.setmeal,DATE_FORMAT(o.createtime,'%Y-%m-%d') createtimeStr,t.money ticketMoney,u.money tourMoney
+        from v_order_info o
+        left join v_ticket_info t
+        on o.ticketid = t.id
+        left join v_tour_info u
+        on o.tourid = u.id
+        where o.id = #{id}
+
+    </select>
 </mapper>
 

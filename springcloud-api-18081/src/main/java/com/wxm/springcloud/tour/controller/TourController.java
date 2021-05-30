@@ -86,6 +86,52 @@ public class TourController {
     }
 
 
+    @PostMapping("/saveOrder")//新增查询
+    @ResponseBody
+    public Result saveOrder(@RequestParam Map map){
+        Order order = JSON.parseObject(JSON.toJSONString(map), Order.class);
+        tourService.saveOrder(order);
+
+        return Result.ok("操作成功").put("id",order.getId());
+    }
+
+    @PostMapping("/updateOrder")//新增查询
+    @ResponseBody
+    public Result updateOrder(@RequestParam Map map){
+        Order order = JSON.parseObject(JSON.toJSONString(map), Order.class);
+        tourService.updateOrder(order);
+
+        return Result.ok("操作成功").put("id",order.getId());
+    }
+
+
+
+
+    @PostMapping("/queryTourObject")//新增查询
+    @ResponseBody
+    public Result queryTourObject(@RequestParam Map map){
+        Tour tour = tourService.queryTourObject(map);
+
+        return Result.ok("操作成功").put("result",tour);
+    }
+
+    @PostMapping("/queryTicketObject")//新增查询
+    @ResponseBody
+    public Result queryTicketObject(@RequestParam Map map){
+        Ticket ticket = tourService.queryTicketObject(map);
+
+        return Result.ok("操作成功").put("result",ticket);
+    }
+
+    @PostMapping("/queryOrderObject")//新增查询
+    @ResponseBody
+    public Result queryOrderObject(@RequestParam Map map){
+        Order order = tourService.queryOrderObject(map);
+
+        return Result.ok("操作成功").put("result",order);
+    }
+
+
 
 
     @PostMapping("/login")

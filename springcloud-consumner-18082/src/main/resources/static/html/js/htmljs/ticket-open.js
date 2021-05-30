@@ -7,9 +7,11 @@ $(function(){
 
 });
 
-function selected(id) {
-    window.location.href = '/html/order-info.html?id='+id;
+function selected(id){
+    window.opener.vm.selectedTicket(id);
+    window.close()
 }
+
 
 
 var vm= new Vue({
@@ -26,21 +28,13 @@ var vm= new Vue({
     methods:{
         getInfo:function(){
 
-            vm.queryList();
+                vm.queryList();
 
         },
-
-
-        createOrder:function(){
-
-            window.location.href = '/html/order-info.html';  //跳转到首页
-        },
-
-
 
         queryList:function(){
             $.ajax({
-                url:'/tour/queryOrderList',
+                url:'/tour/queryTicketList',
                 type:'post',
                 //async
                 data:JSON.stringify(vm.q),
@@ -65,7 +59,7 @@ var vm= new Vue({
                             '<div class="text p-3">'+
                             '<div class="d-flex">'+
                             '<div class="one">'+
-                            '<h3><a href="#">'+info.setmeal+'/'+info.ticketRemark+'</a></h3>';
+                            '<h3><a href="#">'+info.remark+'</a></h3>';
                         divInfo+=
                             '</div>'+
                             '<div class="two">'+
@@ -76,7 +70,7 @@ var vm= new Vue({
                             ' <p>'+info.addrB+'</p>'+
                             '<hr>'+
                             '<p class="bottom-area d-flex">'+
-                            '<span>'+info.createTimeStr+'</span>'+
+                            '<span>用时:'+info.usetime+'小时</span>'+
                             '</p>'+
                             '</div>'+
                             '</div>'+

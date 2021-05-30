@@ -32,4 +32,14 @@ public interface TourService {
     List<Order> queryOrderList(Map map);
 
     int queryOrderListTotal(Map map);
+
+    void saveOrder(Order order);
+
+    void updateOrder(Order order);
+
+    Tour queryTourObject(Map map);
+
+    Ticket queryTicketObject(Map map);
+
+    Order queryOrderObject(Map map);
 }
