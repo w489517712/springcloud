@@ -3,6 +3,7 @@ package com.wxm.springcloud.tour.controller;
 import com.alibaba.fastjson.JSON;
 import com.wxm.springcloud.sys.po.Result;
 import com.wxm.springcloud.test.po.Test;
+import com.wxm.springcloud.tour.po.Ticket;
 import com.wxm.springcloud.tour.po.Tour;
 import com.wxm.springcloud.tour.po.User;
 import com.wxm.springcloud.tour.service.TourService;
@@ -50,9 +51,9 @@ public class TourController {
         return Result.ok("操作成功").put("list",list).put("total",total);
     }
 
-    @PostMapping("/queryList1")//机票查询
+    @PostMapping("/queryTicketList")//机票查询
     @ResponseBody
-    public Result queryList1(@RequestParam Map map){
+    public Result queryTicketList(@RequestParam Map map){
         if(map  == null){
             map = new HashMap();
         }
@@ -61,8 +62,8 @@ public class TourController {
         PageUtil.getQuery(map);
 
         //需要返回总条数和查询的数据数
-        List<Tour> list = tourService.queryList(map);
-        int total = tourService.queryListTotal(map);
+        List<Ticket> list = tourService.queryTicketList(map);
+        int total = tourService.queryTicketListTotal(map);
         return Result.ok("操作成功").put("list",list).put("total",total);
     }
 
@@ -94,32 +95,32 @@ public class TourController {
 
     }
 
-    @PostMapping("/register")
-    @ResponseBody
-    public Result register(@RequestParam Map map){
-        if(map  == null){
-            map = new HashMap();
-        }
-
-        User user1 = JSON.parseObject(JSON.toJSONString(map), User.class);
-        User user = tourService.checkLoginInfo(map);
-
-        if (user != null){
-            //此时表示用户存在,既登录成功
-
-            //更新token
-            String token = UUID.randomUUID().toString().replace("-","");
-            tourService.updateUserToken(token);
-            user.setToken(token);
-            return Result.ok("操作成功").put("user",user).put("token",token);
-
-        }else{
-
-            return Result.error("登录失败！用户名或密码错误！");
-        }
-
-
-    }
+//    @PostMapping("/register")
+//    @ResponseBody
+//    public Result register(@RequestParam Map map){
+//        if(map  == null){
+//            map = new HashMap();
+//        }
+//
+//        User user1 = JSON.parseObject(JSON.toJSONString(map), User.class);
+//        User user = tourService.checkLoginInfo(map);
+//
+//        if (user != null){
+//            //此时表示用户存在,既登录成功
+//
+//            //更新token
+//            String token = UUID.randomUUID().toString().replace("-","");
+//            tourService.updateUserToken(token);
+//            user.setToken(token);
+//            return Result.ok("操作成功").put("user",user).put("token",token);
+//
+//        }else{
+//
+//            return Result.error("登录失败！用户名或密码错误！");
+//        }
+//
+//
+//    }
 
 
 

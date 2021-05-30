@@ -3,8 +3,6 @@ $(function(){
     if(document.cookie==""){
         window.location.href = '/html/contact.html';  //跳转到首页
     }
-    vm.q.s1 = getQueryVariable('s1')
-    vm.q.s2 = getQueryVariable('s2')
     vm.getInfo();
 
 });
@@ -12,9 +10,8 @@ var vm= new Vue({
     el: '#app',
     data: {
         q:{
-            s1:'',
-            s2:'',
-            city:'',
+            addrA:'',
+            addrB:'',
             page:'1'
         },
         allPageNum :0,
@@ -29,7 +26,7 @@ var vm= new Vue({
 
         queryList:function(){
             $.ajax({
-                url:'/tour/queryTourList',
+                url:'/tour/queryTicketList',
                 type:'post',
                 //async
                 data:JSON.stringify(vm.q),
@@ -54,31 +51,18 @@ var vm= new Vue({
                             '<div class="text p-3">'+
                             '<div class="d-flex">'+
                             '<div class="one">'+
-                            '<h3><a href="#">'+info.country+'</a></h3>';
-                        divInfo+=
-                            '<p class="rate">';
-                            for(var j = 0;j<5;j++){
-                                if(j<info.lev){
-                                    divInfo+= '<i class="icon-star"></i>';
-                                }else{
-                                    divInfo+= '<i class="icon-star-o"></i>';
-                                }
-                            }
-                        divInfo+=
-                            '<span>'+info.lev+' Rating</span>'+
-                            '</p>';
+                            '<h3><a href="#">'+info.remark+'</a></h3>';
                         divInfo+=
                             '</div>'+
                             '<div class="two">'+
                             '<span class="price">$'+info.money+'</span>'+
                             '</div>'+
                             '</div>'+
-                            ' <p>'+info.remark+'</p>'+
-                            ' <p class="days"><span>'+info.setmeal+'</span></p>'+
+                            ' <p>'+info.addrA+'</p>'+
+                            ' <p>'+info.addrB+'</p>'+
                             '<hr>'+
                             '<p class="bottom-area d-flex">'+
-                            '<span><i class="icon-map-o"></i> San Franciso, CA</span>'+
-                            '<span class="ml-auto"><a href="#">Discover</a></span>'+
+                            '<span>用时:'+info.usetime+'小时</span>'+
                             '</p>'+
                             '</div>'+
                             '</div>'+

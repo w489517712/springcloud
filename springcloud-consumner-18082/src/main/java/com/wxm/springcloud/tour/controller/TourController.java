@@ -50,7 +50,7 @@ public class TourController extends SysController{
         if(map  == null){
             map = new HashMap();
         }
-        return doPost(apiUrl+"/tour/queryList1", map);
+        return doPost(apiUrl+"/tour/queryTicketList", map);
 
     }
 

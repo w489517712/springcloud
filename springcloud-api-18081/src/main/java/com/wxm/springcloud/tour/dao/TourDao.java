@@ -1,5 +1,6 @@
 package com.wxm.springcloud.tour.dao;
 
+import com.wxm.springcloud.tour.po.Ticket;
 import com.wxm.springcloud.tour.po.Tour;
 import com.wxm.springcloud.tour.po.User;
 import org.apache.ibatis.annotations.Insert;
@@ -25,4 +26,7 @@ public interface TourDao {
 
     Integer register(User user);
 
+    List<Ticket> queryTicketList(Map map);
+
+    int queryTicketListTotal(Map map);
 }

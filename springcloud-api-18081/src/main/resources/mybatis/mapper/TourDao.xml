@@ -45,22 +45,8 @@
           </if>
 
     </select>
-    <select  id="queryList1" resultType="com.wxm.springcloud.tour.po.Tour" >
-        select *  from  v_ticket_info t
-        where 1=1
-        <if test="city != null and city !=''">
-            and  t.name = #{city}
-        </if>
 
-        <if test="id != null and id !=''">
-            and  t.id = #{id}
-        </if>
 
-        <if test="tn != null and tn !=''">
-            limit #{rn} , #{tn}
-        </if>
-
-    </select>
     <select  id="queryListTotal" resultType="int" >
         select count(*) from  v_tour_info t
         where 1=1
@@ -80,7 +66,55 @@
 
             from v_user  where name = #{name} and password = #{password}
     </select>
-    
+
+
+
+
+
+
+    <select  id="queryTicketList" resultType="com.wxm.springcloud.tour.po.Ticket" >
+        select *  from  v_ticket_info t
+        where 1=1
+        <if test="addrA != null and addrA !=''">
+            and  t.addrA = #{addrA}
+        </if>
+
+        <if test="addrB != null and addrB !=''">
+            and  t.addrB = #{addrB}
+        </if>
+
+        <if test="usetime != null and usetime !=''">
+            and  t.usetime = #{usetime}
+        </if>
+
+        <if test="tn != null and tn !=''">
+            limit #{rn} , #{tn}
+        </if>
+
+    </select>
+
+
+    <select  id="queryTicketListTotal" resultType="int" >
+        select count(*) from  v_ticket_info t
+        where 1=1
+        <if test="addrA != null and addrA !=''">
+            and  t.addrA = #{addrA}
+        </if>
+
+        <if test="addrB != null and addrB !=''">
+            and  t.addrB = #{addrB}
+        </if>
+
+        <if test="usetime != null and usetime !=''">
+            and  t.usetime = #{usetime}
+        </if>
+    </select>
+
+
+
+
+
+
 
 
     <update id="updateUserToken">

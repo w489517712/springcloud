@@ -1,5 +1,6 @@
 package com.wxm.springcloud.tour.service;
 
+import com.wxm.springcloud.tour.po.Ticket;
 import com.wxm.springcloud.tour.po.Tour;
 import com.wxm.springcloud.tour.po.User;
 import org.springframework.stereotype.Component;
@@ -22,4 +23,8 @@ public interface TourService {
 
     void insert(User user);
 
+    List<Ticket> queryTicketList(Map map);
+
+
+    int queryTicketListTotal(Map map);
 }
