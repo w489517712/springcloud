@@ -55,6 +55,21 @@ public class TourController extends SysController{
     }
 
 
+
+    @PostMapping("/queryOrderList")//订单查询
+    @ResponseBody
+    public Result queryOrderList(@RequestBody Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+        return doPost(apiUrl+"/tour/queryOrderList", map);
+
+    }
+
+
+
+
+
     @PostMapping("/login")
     @ResponseBody
     public Result login(@RequestBody Map map,HttpServletRequest request,HttpServletResponse response){

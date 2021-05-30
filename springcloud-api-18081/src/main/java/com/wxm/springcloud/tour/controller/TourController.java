@@ -3,6 +3,7 @@ package com.wxm.springcloud.tour.controller;
 import com.alibaba.fastjson.JSON;
 import com.wxm.springcloud.sys.po.Result;
 import com.wxm.springcloud.test.po.Test;
+import com.wxm.springcloud.tour.po.Order;
 import com.wxm.springcloud.tour.po.Ticket;
 import com.wxm.springcloud.tour.po.Tour;
 import com.wxm.springcloud.tour.po.User;
@@ -66,6 +67,25 @@ public class TourController {
         int total = tourService.queryTicketListTotal(map);
         return Result.ok("操作成功").put("list",list).put("total",total);
     }
+
+
+    @PostMapping("/queryOrderList")//订单查询
+    @ResponseBody
+    public Result queryOrderList(@RequestParam Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+
+
+        PageUtil.getQuery(map);
+
+        //需要返回总条数和查询的数据数
+        List<Order> list = tourService.queryOrderList(map);
+        int total = tourService.queryOrderListTotal(map);
+        return Result.ok("操作成功").put("list",list).put("total",total);
+    }
+
+
 
 
     @PostMapping("/login")

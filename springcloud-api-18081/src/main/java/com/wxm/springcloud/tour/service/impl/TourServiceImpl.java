@@ -2,6 +2,7 @@ package com.wxm.springcloud.tour.service.impl;
 
 import com.wxm.springcloud.tour.dao.TicketDao;
 import com.wxm.springcloud.tour.dao.TourDao;
+import com.wxm.springcloud.tour.po.Order;
 import com.wxm.springcloud.tour.po.Ticket;
 import com.wxm.springcloud.tour.po.Tour;
 import com.wxm.springcloud.tour.po.User;
@@ -53,6 +54,16 @@ public class TourServiceImpl implements TourService{
     @Override
     public int queryTicketListTotal(Map map) {
         return tourDao.queryTicketListTotal(map);
+    }
+
+    @Override
+    public List<Order> queryOrderList(Map map) {
+        return tourDao.queryOrderList(map);
+    }
+
+    @Override
+    public int queryOrderListTotal(Map map) {
+        return tourDao.queryOrderListTotal(map);
     }
 
 

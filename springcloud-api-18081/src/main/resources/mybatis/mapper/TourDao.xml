@@ -113,7 +113,57 @@
 
 
 
+    <select  id="queryOrderList" resultType="com.wxm.springcloud.tour.po.Order" >
+        select
+        o.*,t.addrA,t.addrB,t.pngurl,t.remark ticketRemark,u.setmeal,DATE_FORMAT(o.createtime,'%Y-%m-%d') createtimeStr
+        from v_order_info o
+        left join v_ticket_info t
+        on o.ticketid = t.id
+        left join v_tour_info u
+        on o.tourid = u.id
 
+        where 1=1
+        <if test="addrA != null and addrA !=''">
+            and  t.addrA = #{addrA}
+        </if>
+
+        <if test="addrB != null and addrB !=''">
+            and  t.addrB = #{addrB}
+        </if>
+
+        <if test="usetime != null and usetime !=''">
+            and  t.usetime = #{usetime}
+        </if>
+
+        <if test="tn != null and tn !=''">
+            limit #{rn} , #{tn}
+        </if>
+
+    </select>
+
+
+    <select  id="queryOrderListTotal" resultType="int" >
+        select
+        count(*)
+        from v_order_info o
+        left join v_ticket_info t
+        on o.ticketid = t.id
+        left join v_tour_info u
+        on o.tourid = u.id
+
+        where 1=1
+        <if test="addrA != null and addrA !=''">
+            and  t.addrA = #{addrA}
+        </if>
+
+        <if test="addrB != null and addrB !=''">
+            and  t.addrB = #{addrB}
+        </if>
+
+        <if test="usetime != null and usetime !=''">
+            and  t.usetime = #{usetime}
+        </if>
+    </select>
 
 
 

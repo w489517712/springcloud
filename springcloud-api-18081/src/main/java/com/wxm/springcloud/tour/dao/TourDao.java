@@ -1,5 +1,6 @@
 package com.wxm.springcloud.tour.dao;
 
+import com.wxm.springcloud.tour.po.Order;
 import com.wxm.springcloud.tour.po.Ticket;
 import com.wxm.springcloud.tour.po.Tour;
 import com.wxm.springcloud.tour.po.User;
@@ -29,4 +30,8 @@ public interface TourDao {
     List<Ticket> queryTicketList(Map map);
 
     int queryTicketListTotal(Map map);
+
+    List<Order> queryOrderList(Map map);
+
+    int queryOrderListTotal(Map map);
 }
