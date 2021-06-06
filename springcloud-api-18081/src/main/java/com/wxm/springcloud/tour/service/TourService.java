@@ -4,7 +4,6 @@ import com.wxm.springcloud.tour.po.Order;
 import com.wxm.springcloud.tour.po.Ticket;
 import com.wxm.springcloud.tour.po.Tour;
 import com.wxm.springcloud.tour.po.User;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
@@ -44,4 +43,8 @@ public interface TourService {
     Order queryOrderObject(Map map);
 
     List<Map> queryAboutList(Map map);
+
+    List<Map> queryBlogList(Map map);
+
+    int queryBlogListTotal(Map map);
 }

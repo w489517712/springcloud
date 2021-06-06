@@ -97,5 +97,15 @@ public class TourServiceImpl implements TourService{
         return tourDao.queryAboutList(map);
     }
 
+    @Override
+    public List<Map> queryBlogList(Map map) {
+        return tourDao.queryBlogList(map);
+    }
+
+    @Override
+    public int queryBlogListTotal(Map map) {
+        return tourDao.queryBlogListTotal(map);
+    }
+
 
 }

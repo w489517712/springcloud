@@ -16,6 +16,10 @@ public class PageUtil extends HashMap{
     //处理分页参数
     public static void getQuery(Map map){
 
+        if(null != map.get("pageNum")){
+            pageNum = Integer.valueOf(map.get("pageNum").toString());
+        }
+
         if(null != map){
             int page = map.get("page")==null?1:Integer.parseInt(map.get("page").toString());
             rn = (page-1)*pageNum;

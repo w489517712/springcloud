@@ -57,6 +57,37 @@
             and  t.id = #{id}
         </if>
     </select>
+
+
+    <select  id="queryBlogList" resultType="map" >
+        select id,tag,msg,DATE_FORMAT(createtime,'%Y-%m-%d') createtime ,username,pngurl  from v_blog_info
+        where 1=1
+
+
+        <if test="tn != null and tn !=''">
+            limit #{rn} , #{tn}
+        </if>
+
+    </select>
+
+
+    <select  id="queryBlogListTotal" resultType="int" >
+        select count(*) from v_blog_info
+        where 1=1
+
+        <if test="id != null and id !=''">
+            and  t.id = #{id}
+        </if>
+    </select>
+
+
+
+
+
+
+
+
+
     <select  id="checkLoginInfo" resultType="com.wxm.springcloud.tour.po.User" >
           select
             id,

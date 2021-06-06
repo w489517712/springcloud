@@ -46,4 +46,8 @@ public interface TourDao {
     Order queryOrderObject(Map map);
 
     List<Map> queryAboutList(Map map);
+
+    List<Map> queryBlogList(Map map);
+
+    int queryBlogListTotal(Map map);
 }

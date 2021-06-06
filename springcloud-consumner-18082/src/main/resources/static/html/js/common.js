@@ -44,7 +44,9 @@ function doFenye(){
 
     var page = vm.q.page
     var allPageNum = vm.allPageNum
-    var allPage = Math.ceil(allPageNum/6)
+    var pageNum = vm.q.pageNum == null?6:8
+    var allPage = Math.ceil(allPageNum/pageNum)
+
     if(allPage>5){
         if(page<4){
             var ul = ""
@@ -101,7 +103,8 @@ function toFristPage(){
     vm.queryList();
 }
 function toEndPage(){
-    vm.q.page = Math.ceil(vm.allPageNum/6)
+    var pageNum = vm.q.pageNum == null?6:8
+    vm.q.page = Math.ceil(vm.allPageNum/pageNum);
     vm.queryList();
 }
 function toPage(){

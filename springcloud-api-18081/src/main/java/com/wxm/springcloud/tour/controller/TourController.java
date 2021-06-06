@@ -169,6 +169,22 @@ public class TourController {
 
     }
 
+    @PostMapping("/queryBlogList")//订单查询
+    @ResponseBody
+    public Result queryBlogList(@RequestParam Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+
+
+        PageUtil.getQuery(map);
+
+        //需要返回总条数和查询的数据数
+        List<Map> list = tourService.queryBlogList(map);
+        int total = tourService.queryBlogListTotal(map);
+        return Result.ok("操作成功").put("list",list).put("total",total);
+    }
+
 //    @PostMapping("/register")
 //    @ResponseBody
 //    public Result register(@RequestParam Map map){

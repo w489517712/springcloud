@@ -127,6 +127,15 @@ public class TourController extends SysController{
 
     }
 
+    @PostMapping("/queryBlogList")//订单查询
+    @ResponseBody
+    public Result queryBlogList(@RequestBody Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+        return doPost(apiUrl+"/tour/queryBlogList", map);
+
+    }
 
     @PostMapping("/login")
     @ResponseBody
