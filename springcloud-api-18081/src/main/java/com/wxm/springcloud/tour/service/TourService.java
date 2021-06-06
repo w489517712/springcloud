@@ -42,4 +42,6 @@ public interface TourService {
     Ticket queryTicketObject(Map map);
 
     Order queryOrderObject(Map map);
+
+    List<Map> queryAboutList(Map map);
 }

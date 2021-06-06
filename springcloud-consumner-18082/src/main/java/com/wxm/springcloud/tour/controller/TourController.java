@@ -117,6 +117,17 @@ public class TourController extends SysController{
 
 
 
+    @PostMapping("/queryAboutObject")
+    @ResponseBody
+    public Result queryAboutObject(@RequestBody Map map){
+        if(map  == null){
+            map = new HashMap();
+        }
+        return doPost(apiUrl+"/tour/queryAboutObject", map);
+
+    }
+
+
     @PostMapping("/login")
     @ResponseBody
     public Result login(@RequestBody Map map,HttpServletRequest request,HttpServletResponse response){

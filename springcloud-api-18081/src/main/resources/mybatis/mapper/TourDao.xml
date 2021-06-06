@@ -221,5 +221,13 @@
         where o.id = #{id}
 
     </select>
+
+    <select id="queryAboutList" resultType="map">
+        select *  from v_about_info
+
+    </select>
+
+
+
 </mapper>
 

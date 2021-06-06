@@ -92,5 +92,10 @@ public class TourServiceImpl implements TourService{
         return tourDao.queryOrderObject(map);
     }
 
+    @Override
+    public List<Map> queryAboutList(Map map) {
+        return tourDao.queryAboutList(map);
+    }
+
 
 }

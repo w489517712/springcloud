@@ -133,6 +133,14 @@ public class TourController {
 
 
 
+    @PostMapping("/queryAboutObject")//新增查询
+    @ResponseBody
+    public Result queryAboutObject(@RequestParam Map map){
+        List<Map>  listresult = tourService.queryAboutList(map);
+
+        return Result.ok("操作成功").put("result",listresult);
+    }
+
 
     @PostMapping("/login")
     @ResponseBody
